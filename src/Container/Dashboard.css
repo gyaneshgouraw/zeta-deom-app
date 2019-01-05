@@ -1,0 +1,34 @@
+.dashContainer{
+    margin:0 10%;
+    
+}
+
+.title{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:50px;
+    background: green;
+    color:white
+}
+
+.list{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-left:25%
+}
+
+.favourites{
+    display: flex;
+    flex-direction: row;
+    overflow: scroll
+   
+}
+
+.categories{
+    display:flex;
+    overflow:scroll
+}
