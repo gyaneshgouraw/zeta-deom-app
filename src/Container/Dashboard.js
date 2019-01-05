@@ -52,8 +52,8 @@ export default class componentName extends Component {
 
   renderRecipie = () => {
     if (this.state) {
-      const { recipes, filter, recipesF } = this.state; //
-      const recipesList = filter ? recipesF : recipes;
+      const { recipes, filterRec, recipesF } = this.state; //
+      const recipesList = filterRec ? recipesF : recipes;
 
       const cards = recipesList.map(item => {
         return (
@@ -117,6 +117,21 @@ export default class componentName extends Component {
     }
   };
 
+  filterByText = event => {
+    debugger;
+    const inputText = event.target.value;
+    const { recipes, favourite, categories } = this.state;
+    const filteredSet = recipes.filter(item => {
+      if (item.category.indexOf(inputText) != -1) {
+        return item;
+      }
+    });
+    this.setState({
+      filterRec: true,
+      recipesF: filteredSet
+    });
+  };
+
   filter = filterItem => {
     const { recipes, favourite, categories } = this.state;
     const filteredSet = recipes.filter(item => {
@@ -132,7 +147,8 @@ export default class componentName extends Component {
     });
 
     this.setState({
-      filter: true,
+      filterRec: true,
+      filterFav: true,
       recipesF: filteredSet,
       favouriteF: FavFilteredSet
     });
@@ -147,6 +163,7 @@ export default class componentName extends Component {
         <h3>Favourites</h3>
         <div className="favourites">{this.renderFavourites()}</div>
         <h3>Select Categories</h3>
+        <input type="text" onChange={this.filterByText} />
         <div className="categories">{this.rederCategories()}</div>
 
         <hr />
